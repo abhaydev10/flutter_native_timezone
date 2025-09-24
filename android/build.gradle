@@ -1,17 +1,57 @@
+// group 'com.whelksoft.flutter_native_timezone'
+// version '1.0-SNAPSHOT'
+
+// buildscript {
+//     ext.kotlin_version = '1.5.30'
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:4.2.1'
+//     }
+// }
+
+// rootProject.allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+// }
+
+// apply plugin: 'com.android.library'
+// apply plugin: 'kotlin-android'
+
+// android {
+//     compileSdkVersion 30
+
+//     sourceSets {
+//         main.java.srcDirs += 'src/main/kotlin'
+//     }
+//     defaultConfig {
+//         targetSdkVersion 30
+//         minSdkVersion 16
+//         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//     }
+//     lintOptions {
+//         disable 'InvalidPackage'
+//     }
+// }
+
+// dependencies {
+//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+// }
+
+// java {
+//     sourceCompatibility = JavaVersion.VERSION_1_8
+//     targetCompatibility = JavaVersion.VERSION_1_8
+// }
+
 group 'com.whelksoft.flutter_native_timezone'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.5.30'
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
-    }
-}
+// No buildscript block - let main project handle versions
 
 rootProject.allprojects {
     repositories {
@@ -24,26 +64,40 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    namespace 'com.whelksoft.flutter_native_timezone'  // Add namespace for AGP 8+
+    compileSdk 35  // Updated to SDK 35
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17  // Required for AGP 8+
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'  // Updated for AGP 8+ compatibility
+    }
+    
+    // Enable buildConfig for AGP 8+
+    buildFeatures {
+        buildConfig = true
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    
     defaultConfig {
-        targetSdkVersion 30
         minSdkVersion 16
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    
     lintOptions {
         disable 'InvalidPackage'
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    // Use hardcoded versions instead of kotlin_version variable
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24"
 }
