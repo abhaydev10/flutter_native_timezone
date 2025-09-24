@@ -1,22 +1,59 @@
+# name: flutter_native_timezone
+# description: A flutter plugin for getting the local timezone of the device.
+# version: 2.0.1
+# homepage: https://github.com/pinkfish/flutter_native_timezone
+
+# environment:
+#   sdk: '>=2.12.0 <3.0.0'
+#   flutter: ">=1.12.0"
+
+# dependencies:
+#   flutter_web_plugins:
+#     sdk: flutter
+#   flutter:
+#     sdk: flutter
+#   js: '>=0.6.3 <2.0.0'
+
+# dev_dependencies:
+#   flutter_test:
+#     sdk: flutter
+
+# # The following section is specific to Flutter.
+# flutter:
+#   plugin:
+#     platforms:
+#       android:
+#         package: com.whelksoft.flutter_native_timezone
+#         pluginClass: FlutterNativeTimezonePlugin
+#       ios:
+#         pluginClass: FlutterNativeTimezonePlugin
+#       macos:
+#         pluginClass: FlutterNativeTimezonePlugin
+#       web:
+#         pluginClass: FlutterNativeTimezonePlugin
+#         fileName: flutter_native_timezone_web.dart
+
 name: flutter_native_timezone
 description: A flutter plugin for getting the local timezone of the device.
 version: 2.0.1+agp8
-homepage: https://github.com/pinkfish/flutter_native_timezone
+homepage: https://github.com/abhaydev10/flutter_native_timezone
 
 environment:
   sdk: ">=2.12.0 <4.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
-  flutter_web_plugins:
-    sdk: flutter
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   js: ">=0.6.3 <2.0.0"
+  plugin_platform_interface: ^2.1.0 # Add this for modern plugin architecture
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.0 # Add this for better code quality
 
 # The following section is specific to Flutter.
 flutter:
